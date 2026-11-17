@@ -1,0 +1,24 @@
+[nest]
+name = "arc-usdc"
+chain = "arc-testnet"
+chain_id = 5042002
+rpc_urls = [
+    "https://rpc.testnet.arc.io",
+    "https://rpc.quicknode.testnet.arc.io",
+]
+schema_version = 1
+block_timestamps = true
+
+[[contracts]]
+alias = "usdc"
+address = "0x3600000000000000000000000000000000000000"
+start_block = 72550000
+abi = "abis/usdc.json"
+# Arc's public RPC refuses a getLogs with more than ten topic0s ("requested range too large").
+events = ["Transfer", "Approval", "Mint", "Burn", "MinterConfigured", "AuthorizationUsed", "Blacklisted", "UnBlacklisted", "Pause", "Unpause"]
+
+[[contracts]]
+alias = "native"
+address = "0xfffffffffffffffffffffffffffffffffffffffe"
+start_block = 72550000
+abi = "abis/native.json"
